@@ -1,7 +1,13 @@
-import { userResolvers } from "./user.resolver.js";
-import { ProductResolvers } from "./product.resolver.js";
+import { userResolvers } from './user.resolver.js';
+import { productResolvers } from './product.resolver.js';
 
 export const resolvers = {
-  ...userResolvers,
-  ...ProductResolvers
+  Query: {
+    ...userResolvers.Query,
+    ...productResolvers.Query,
+  },
+  Mutation: {
+    ...userResolvers.Mutation,
+    ...productResolvers.Mutation,
+  },
 };

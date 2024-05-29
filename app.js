@@ -4,8 +4,22 @@ import { connectDB } from './src/config/connectDB.js'
 import { ApolloServer } from '@apollo/server'
 import { typeDefs } from './src/schemas/main.schema.js'
 import { resolvers } from './src/resolvers/main.resolver.js'
+import { startStandaloneServer } from '@apollo/server/standalone'
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  formatError: (error) => {
+    return {
+      message: error.message,
+      code: error.status || httpStatusCodes['Internal Server Error']
+    }
+  }
+})
+
+startStandaloneServer(server, {
+  listen: { port: 3000 }
+})
+.then(({url}) => {
+  console.log(`🚀 Server running at ${url}`)
 })

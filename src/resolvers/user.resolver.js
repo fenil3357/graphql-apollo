@@ -5,7 +5,7 @@ import { getUsers } from "../db/database_functions/user/getUsers.js";
 import { updateUser } from "../db/database_functions/user/updateUser.js";
 
 export const userResolvers = {
-  async getUser({ _id }) {
+  async getUser(_id) {
     try {
       const user = await getUser(_id)
       return user;

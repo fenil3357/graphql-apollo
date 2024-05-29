@@ -4,7 +4,7 @@ import { updateProduct } from "../db/database_functions/product/updateProduct.js
 import { getProducts } from "../db/database_functions/product/getProducts.js";
 import { getProduct } from "../db/database_functions/product/getProduct.js";
 
-export const ProductResolvers = {
+export const productResolvers = {
   async getProduct({ _id }) {
     try {
       const product = await getProduct(_id);
