@@ -1,0 +1,29 @@
+{
+  "name": "graphql-apollo",
+  "version": "1.0.0",
+  "description": "GraphQL apollo server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenil3357/graphql-apollo.git"
+  },
+  "keywords": [
+    "Graphql",
+    "apollo",
+    "nodejs"
+  ],
+  "author": "Fenil Rami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fenil3357/graphql-apollo/issues"
+  },
+  "homepage": "https://github.com/fenil3357/graphql-apollo#readme",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.10.4",
+    "graphql": "^16.8.1"
+  }
+}
