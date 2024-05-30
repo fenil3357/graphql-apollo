@@ -12,7 +12,7 @@ const server = new ApolloServer({
   formatError: (error) => {
     return {
       message: error.message,
-      code: error.status || httpStatusCodes['Internal Server Error']
+      code: error.extensions.code
     }
   }
 })

@@ -5,6 +5,7 @@ type User {
   _id: String!
   name: String!
   email: String!
+  products: [Product!]
 }
 
 type Query {

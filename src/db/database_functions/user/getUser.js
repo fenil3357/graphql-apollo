@@ -7,8 +7,8 @@ export const getUser = async (id) => {
 
     if (!user) throw new CustomError(httpStatusCodes['Not Found'], 'User with given id does not exists');
 
-    return user;
+    return user
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

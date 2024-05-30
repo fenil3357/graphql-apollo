@@ -1,7 +1,11 @@
-export class CustomError extends Error {
+import { GraphQLError } from "graphql"
+export class CustomError extends GraphQLError {
     constructor(status, message) {
-        super(message)
-        this.status = status
+        super(message, {
+            extensions: {
+                code: status
+            }
+        })
     }
 }
 
