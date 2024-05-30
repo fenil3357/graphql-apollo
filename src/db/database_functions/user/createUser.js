@@ -10,6 +10,6 @@ export const createUser = async (data) => {
         return new_user;
     }
     catch (error) {
-        throw new CustomError(error.status || httpStatusCodes['Bad Request'], error.message)
+        throw new CustomError(error?.extensions?.code || httpStatusCodes['Conflict'], error.message)
     }
 }

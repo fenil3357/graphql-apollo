@@ -13,6 +13,6 @@ export const updateUser = async (id, dataToUpdate) => {
 
     return user;
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

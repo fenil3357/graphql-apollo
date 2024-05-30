@@ -9,6 +9,6 @@ export const deleteUser = async (id) => {
 
     if (!user) throw new CustomError(httpStatusCodes['Not Found'], 'User with given id does not exists');
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

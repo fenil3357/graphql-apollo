@@ -9,6 +9,6 @@ export const createProduct = async (data) => {
 
     return new_product;
   } catch (error) {
-    throw new CustomError(error.status || httpStatusCodes['Bad Request'], error.message);
+    throw new CustomError(error.extensions.code || httpStatusCodes['Bad Request'], error.message);
   }
 }

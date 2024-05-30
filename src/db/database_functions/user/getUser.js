@@ -3,7 +3,7 @@ import { userModel } from "../../models/user.model.js";
 
 export const getUser = async (id) => {
   try {
-    const user = await userModel.findById(id).lean();
+    const user = await userModel.findById(id).populate('products').lean();
 
     if (!user) throw new CustomError(httpStatusCodes['Not Found'], 'User with given id does not exists');
 

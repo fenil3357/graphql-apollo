@@ -10,6 +10,6 @@ export const deleteProduct = async (id) => {
 
     if(!product) throw new CustomError(httpStatusCodes['Not Found'], 'Product with given id does not exists');
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

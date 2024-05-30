@@ -13,6 +13,6 @@ export const updateProduct = async (id, dataToUpdate) => {
 
     return product;
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

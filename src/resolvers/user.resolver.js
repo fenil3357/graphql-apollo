@@ -29,7 +29,6 @@ export const userResolvers = {
         const user = await createUser({ name, email });
         return user;
       } catch (error) {
-        console.error('Error in createUser resolver:', error);
         throw error;
       }
     },

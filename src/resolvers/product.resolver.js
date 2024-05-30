@@ -23,9 +23,9 @@ export const productResolvers = {
     },
   },
   Mutation: {
-    async createProduct(_, { name, price }) {
+    async createProduct(_, { name, price, user }) {
       try {
-        const product = await createProduct({ name, price })
+        const product = await createProduct({ name, price, user })
         return product;
       } catch (error) {
         throw error;
@@ -42,9 +42,7 @@ export const productResolvers = {
     async deleteProduct(_, { _id }) {
       try {
         await deleteProduct(_id);
-        return {
-          message: "Product deleted successfully!"
-        }
+        return "Product deleted successfully!"
       } catch (error) {
         throw error;
       }

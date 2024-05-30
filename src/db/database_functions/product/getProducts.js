@@ -6,6 +6,6 @@ export const getProducts = async () => {
     const products = await productModel.find().lean();
     return products;
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }

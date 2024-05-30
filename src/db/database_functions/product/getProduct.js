@@ -9,6 +9,6 @@ export const getProduct = async (id) => {
 
     return product;
   } catch (error) {
-    throw new CustomError(error.status, error.message);
+    throw new CustomError(error.extensions.code, error.message);
   }
 }
