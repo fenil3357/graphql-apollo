@@ -17,9 +17,18 @@ const server = new ApolloServer({
   }
 })
 
-startStandaloneServer(server, {
-  listen: { port: 3000 }
-})
-.then(({url}) => {
-  console.log(`🚀 Server running at ${url}`)
-})
+async function startServer() {
+  try {
+    await connectDB();
+    startStandaloneServer(server, {
+      listen: { port: 3000 }
+    })
+      .then(({ url }) => {
+        console.log(`🚀 Server running at ${url}`)
+      })
+  } catch (error) {
+    console.log('Error', error);
+  }
+}
+
+startServer();

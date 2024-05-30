@@ -13,8 +13,8 @@ type Query {
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
-  updateUser(_id: String!, name: String, email: String): User!
+  createUser(name: String!, email: String!): User
+  updateUser(_id: String!, name: String, email: String): User
   deleteUser(_id: String!): User
 }
 `;
