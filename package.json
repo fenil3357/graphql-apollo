@@ -26,8 +26,10 @@
   "dependencies": {
     "@apollo/server": "^4.10.4",
     "@graphql-tools/merge": "^9.0.4",
+    "dotenv": "^16.4.5",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
+    "mongoose": "^8.4.3",
     "nodemon": "^3.1.2"
   }
 }
