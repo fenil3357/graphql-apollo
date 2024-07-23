@@ -43,7 +43,7 @@ export const userResolvers = {
     deleteUser: async (_, { _id }) => {
       try {
         const user = await deleteUser(_id);
-        return user;
+        return "User deleted successfully!";
       } catch (error) {
         throw error;
       }

@@ -17,6 +17,7 @@ export const productResolvers = {
     async getProducts() {
       try {
         const products = await getProducts();
+        return products;
       } catch (error) {
         throw error;
       }
