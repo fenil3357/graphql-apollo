@@ -1,10 +1,10 @@
-import { CustomError, httpStatusCodes } from './src/constants/constants.js'
-import { errRes } from './src/helpers/sendResponse.js'
-import { connectDB } from './src/config/connectDB.js'
 import { ApolloServer } from '@apollo/server'
+import { startStandaloneServer } from '@apollo/server/standalone'
+import { connectDB } from './src/config/connectDB.js'
 import { typeDefs } from './src/schemas/main.schema.js'
 import { resolvers } from './src/resolvers/main.resolver.js'
-import { startStandaloneServer } from '@apollo/server/standalone'
+import { httpStatusCodes } from './src/constants/constants.js'
+import { ApolloServerErrorCode } from '@apollo/server/errors'
 
 const server = new ApolloServer({
   typeDefs,
@@ -12,8 +12,12 @@ const server = new ApolloServer({
   formatError: (error) => {
     return {
       message: error.message,
-      code: error.extensions.code
+      code: error?.extensions?.code || ApolloServerErrorCode['INTERNAL_SERVER_ERROR'],
+      httpStatusCode : error?.extensions?.httpStatusCode || httpStatusCodes['Internal Server Error']
     }
+  },
+  context: ({ req, res }) => {
+    return { req, res };
   }
 })
 
@@ -21,7 +25,7 @@ async function startServer() {
   try {
     await connectDB();
     startStandaloneServer(server, {
-      listen: { port: 3000 }
+      listen: { port: process.env.PORT || 3000 }
     })
       .then(({ url }) => {
         console.log(`🚀 Server running at ${url}`)

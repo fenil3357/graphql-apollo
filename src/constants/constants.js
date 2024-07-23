@@ -1,9 +1,10 @@
 import { GraphQLError } from "graphql"
 export class CustomError extends GraphQLError {
-    constructor(status, message) {
+    constructor(httpStatusCode ,status, message) {
         super(message, {
             extensions: {
-                code: status
+                code: status,
+                httpStatusCode
             }
         })
     }
@@ -74,3 +75,8 @@ export const httpStatusCodes = {
     'Not Extended': 510,
     'Network Authentication Required': 511
 }
+
+export const customGraphqlErrorCodes = {
+    RESOURCE_NOT_FOUND: 'RESOURCE_NOT_FOUND',
+    RESOURCE_CONFLICT: 'RESOURCE_CONFLICT' 
+};
